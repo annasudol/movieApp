@@ -1,0 +1,22 @@
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+@import 'styles/header';
+@import 'styles/movie';
+
+
+
+.movie-app {
+    overflow: hidden
+
+}
+
+body {
+    overflow: auto;
+    background-color: $darkgrey;
+    min-height: 700px;
+}
+
+
+
+

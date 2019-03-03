@@ -1,0 +1,55 @@
+@mixin animation($delay, $duration, $animation, $type, $amount) {
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-timing-function: $type;
+    animation-iteration-count: $amount;
+    animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+}
+@mixin aspect-breakpoint($point,$prefix: '') {
+    @media screen and ($prefix + aspect-ratio: $point) {
+        @content;
+    }
+}
+@mixin breakpoint($point, $type: min-width) {
+    @if (not unitless($point)) {
+        @media ($type: $point) {
+            @content;
+        }
+    } @else {
+        @media ($type: $point + px) {
+            @content;
+        }
+    }
+}
+@mixin pos($top: auto, $right: auto, $bottom: auto, $left: auto, $position: absolute) {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    position: $position;
+}
+
+@mixin relative-reset {
+    @include pos(auto, auto, auto, auto, relative);
+}
+@mixin pos($top: auto, $right: auto, $bottom: auto, $left: auto, $position: absolute) {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    position: $position;
+}
+
+@mixin relative-reset {
+    @include pos(auto, auto, auto, auto, relative);
+}
+
+
+.lato {
+    font-family: 'Lato', sans-serif;
+}
+
+.oswald {
+    font-family: 'Oswald', sans-serif;
+}
