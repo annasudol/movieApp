@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import formatter from '../api/helpers'
+import Loader from 'react-loader-spinner'
 
 class Movie extends Component {
-
+    state={ loading: false }
     render() {
 
         const data = this.props.movieData;
-
         const title =data['title'];
         const overview = data['overview'];
         const relaseDate = data['release_date'];
@@ -23,6 +23,7 @@ class Movie extends Component {
         return (
             
             <div className="movie" style={style}>
+               {this.state.loading ?  <div className="movie__item"><div className="loader"><Loader type="Puff" className="loader" color="#00BFFF" height="200" width="200"/></div> </div>  : (
                 <div className="movie__item">
                     <div className="movie__text">
                         <h1>{title}</h1>
@@ -40,6 +41,7 @@ class Movie extends Component {
                     <div className="movie__image"><img src={posterImg} alt="poster"/></div>
                     <div className="movie__overview"><p>{overview}</p></div>       
                 </div>
+               )}
             </div>
         );
     }
