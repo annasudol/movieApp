@@ -6,10 +6,10 @@ import Home from './components/Home'
 import NoMatch from './components/NoMatch';
 import Movie from './components/Movie'
 import logo from './images/svg/logo.svg'
-import Autocomplete from './components/Autocomplete'
+import Search from './components/Search'
 import { getMovie } from './api/api'
 
-// const movie_id = '76341';
+
 
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
     super(props);
     this.state = {
       movie: [],
-      input: ''
+      input: '',
     }
   }
 
@@ -29,6 +29,7 @@ class App extends Component {
     .catch(error=>{
       console.warn(error)
     })
+
   }
 
   handleOnClick=(id)=>{
@@ -41,30 +42,34 @@ class App extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.movie != nextState.movie;
+    return this.state.movie !== nextState.movie;
   }
 
   render() {
+
   
     return (
       <Router>
         <section className="movie-app">
           <header>
-            <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
-            <ul className="nav-list">
-              <li><Link to="/MovieRanking">MovieRanking</Link></li>
-              <li><Link to="/Discover">Discover</Link></li>
-              <li><Autocomplete
-                    handleOnClick={this.handleOnClick}
-                  />
-              </li>
-            </ul>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route component={MovieRanking}/>
-            <Route component={Discover}/>
-            <Route component={NoMatch}/>
-          </Switch>
+           <div className="container">
+              <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
+                <ul className="nav-list">
+                  <li><Link to="/MovieRanking">MovieRanking</Link></li>
+                  <li><Link to="/Discover">Discover</Link></li>
+                  <li><Search
+                        handleOnClick={this.handleOnClick}
+                      />
+                  </li>
+                </ul>
+          
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route component={MovieRanking}/>
+                <Route component={Discover}/>
+                <Route component={NoMatch}/>
+              </Switch>
+           </div>
           </header>
           <Movie movieData={this.state.movie}/>
         </section>

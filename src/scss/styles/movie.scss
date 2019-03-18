@@ -22,14 +22,11 @@
     border-radius: 5px;
     background-color: rgba(#0B0C10, 0.8);
     max-width: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
 
     @media (min-width: $tablet) {
         width: calc(100% - 60px);
-    
+
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;

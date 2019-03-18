@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { getSearchQueryMovie, getMovie } from '../api/api'
-class Autocomplete extends Component {
+class Search extends Component {
 
   constructor(props) {
     super(props);
@@ -73,9 +73,9 @@ class Autocomplete extends Component {
         );
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
-            <em>No suggestions, you're on your own!</em>
-          </div>
+          <ul class="suggestions">
+          <li>No suggestions!</li>
+        </ul>
         );
       }
     }
@@ -93,5 +93,8 @@ class Autocomplete extends Component {
     );
   }
 }
+Search.propTypes = {
+  handleOnClick: PropTypes.func
+}
 
-export default Autocomplete;
+export default Search;

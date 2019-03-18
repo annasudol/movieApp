@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import formatter from '../api/helpers'
 import Loader from 'react-loader-spinner'
-
+import image from '../images/png/noimage.png'
 class Movie extends Component {
     state={ loading: false }
     render() {
-
         const data = this.props.movieData;
         const title =data['title'];
         const overview = data['overview'];
@@ -18,7 +17,7 @@ class Movie extends Component {
         const budget = data['budget'];
         const revenue = data['revenue'];
         const backdropImg = 'https://image.tmdb.org/t/p/original/' + data['backdrop_path'];
-        const posterImg = 'https://image.tmdb.org/t/p/original/' + data['poster_path'];
+        const posterImg = data['poster_path'] ? 'https://image.tmdb.org/t/p/original/' + data['poster_path'] : image;
         const style = {backgroundImage:  'url(' + backdropImg +')'};
         return (
             
@@ -31,7 +30,7 @@ class Movie extends Component {
                         <div className="movie__details">
                            <div className="movie__el"><span>Rating:</span><p>{rating}</p></div>
                            <div className="movie__el"><span>Popularity</span><p>{popularity}</p></div>
-                           <div className="movie__el"><span>Release date:</span><p>{relaseDate}</p></div>
+                           <div className="movie__el"><span>Release date:</span><p>{relaseDate ? relaseDate : 'no Data'}</p></div>
                            <div className="movie__el"><span>Run Time:</span><p>{runtime ? runtime : 'no Data'}</p></div>
                            <div className="movie__el"><span>Budget:</span><p>{formatter.format(budget)}</p></div>
                            <div className="movie__el"><span>Revenue:</span><p> {formatter.format(revenue)}</p></div>
