@@ -1,9 +1,11 @@
 @import 'reset';
 @import 'variables';
 @import 'mixins';
+@import 'input-range/input-range';
 @import 'styles/header';
 @import 'styles/movie';
 @import 'styles/suggestions';
+@import 'styles/form';
 
 
 .movie-app {

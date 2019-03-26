@@ -61,8 +61,6 @@ class Search extends Component {
         suggestionsListComponent = (
           <ul class="suggestions">
             {filteredSuggestions.map((suggestion) => {
-  
-
               return (
                 <li key={suggestion.id} onClick={()=>onClick(suggestion)}>
                   {suggestion.title}
@@ -74,8 +72,8 @@ class Search extends Component {
       } else {
         suggestionsListComponent = (
           <ul class="suggestions">
-          <li>No suggestions!</li>
-        </ul>
+            <li>No suggestions!</li>
+          </ul>
         );
       }
     }
