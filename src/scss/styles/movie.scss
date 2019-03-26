@@ -8,6 +8,11 @@
     padding-top: 180px;
     align-items: center;
     justify-content: center;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    botton: 0;
 
     @media (min-width: $tablet) {
         padding-top: 80px;
@@ -26,7 +31,6 @@
 
     @media (min-width: $tablet) {
         width: calc(100% - 60px);
-
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
@@ -35,13 +39,8 @@
         width: calc(100% - 100px);
     }
 }
-.loader {
-    height: 500px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
+
 
 .movie__image {
     float: left;
@@ -146,8 +145,6 @@
 }
 
 .movie__el {
-    // margin: 8px 8px 8px 0;
-    // flex-basis: 50%;
     width: 50%;
     margin-top: 5px;
 }

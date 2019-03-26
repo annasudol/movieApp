@@ -1,7 +1,7 @@
 const api_key = '463b8bfc45cbc59423a7200dbfcb5351';
 
 
-export const getMovie = async (id)=>{
+export const getMovie = async (id = 76341)=>{
     const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`);
     const resJSON = await res.json();
     return resJSON;

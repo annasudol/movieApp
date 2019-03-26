@@ -24,7 +24,7 @@ class App extends Component {
 
 
   componentDidMount() {
-    getMovie(76341)
+    getMovie()
     .then(movie=>this.setState({loading: false, movie}))
     .catch(error=>{
       console.warn(error)
@@ -51,27 +51,24 @@ class App extends Component {
     return (
       <Router>
         <section className="movie-app">
-          <header>
-           <div className="container">
-              <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
+          <header className="header">
+              <div className="menu">
+                <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
                 <ul className="nav-list">
-                  <li><Link to="/MovieRanking">MovieRanking</Link></li>
-                  <li><Link to="/Discover">Discover</Link></li>
-                  <li><Search
-                        handleOnClick={this.handleOnClick}
-                      />
-                  </li>
+                    <li><Link to="/MovieRanking" className="nav-lis--link">MovieRanking</Link></li>
+                    <li><Link to="/Discover" className="nav-lis--link">Discover</Link></li>
+                    <li><Link to="/"><Search handleOnClick={this.handleOnClick}/></Link></li>
                 </ul>
-          
+              </div>
               <Switch>
-                <Route exact path="/" component={Home} />
-                <Route component={MovieRanking}/>
+              <Route exact path='/' render={() => (
+                <Movie movieData={this.state.movie}/>
+              )} />
                 <Route component={Discover}/>
                 <Route component={NoMatch}/>
               </Switch>
-           </div>
+  
           </header>
-          <Movie movieData={this.state.movie}/>
         </section>
       </Router>
     );
