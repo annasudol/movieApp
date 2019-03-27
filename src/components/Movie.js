@@ -5,7 +5,13 @@ import Loader from 'react-loader-spinner'
 import image from '../images/png/noimage.png'
 class Movie extends Component {
     state={ loading: false }
+
+    handleShowDetails=()=>{
+        this.props.closeDetails()
+    }
     render() {
+        const { showDetails } = this.props;
+
         const data = this.props.movieData;
         const title =data['title'];
         const overview = data['overview'];
@@ -19,10 +25,15 @@ class Movie extends Component {
         const backdropImg = 'https://image.tmdb.org/t/p/original/' + data['backdrop_path'];
         const posterImg = data['poster_path'] ? 'https://image.tmdb.org/t/p/original/' + data['poster_path'] : image;
         const style = {backgroundImage:  'url(' + backdropImg +')'};
+        const none = {backgroundImage: 'none'}
+       
         return (
-            <div className="movie" style={style}>
-               {this.state.loading ?  <div className="movie__item"><div className="loader"><Loader type="Puff" className="loader" color="#00BFFF" height="200" width="200"/></div> </div>  : (
-                <div className="movie__item">
+            <div className="movie" style={showDetails ? {backgroundImage: 'none'} : style}>
+               {/* {this.state.loading ?  <div className="movie__item"><div className="loader"><Loader type="Puff" className="loader" color="#00BFFF" height="200" width="200"/></div> </div>  : ( */}
+                <div className="movie-background" style={!showDetails ? {display: 'none'} : {display: 'fixed'} }>
+                    <button className="movie-close-btn" onClick={this.handleShowDetails}><span className="movie-close-icon"></span></button>
+                </div>
+                <div className="movie__item" style={showDetails && {bottom: '20%'} }>
                     <div className="movie__text">
                         <h1>{title}</h1>
                         {generes && generes.map(genere => <p>{genere.name}, </p> )}
@@ -46,7 +57,8 @@ class Movie extends Component {
 }
 
 Movie.propTypes = {
-    movieData: PropTypes.object
+    movieData: PropTypes.object,
+    closeDetails: PropTypes.func
 };
 
 export default Movie;

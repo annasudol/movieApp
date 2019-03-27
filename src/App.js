@@ -44,19 +44,21 @@ class App extends Component {
   }
 
   render() {
+    console.log('app',this.state.movie)
 
-  
     return (
       <Router>
         <section className="movie-app">
           <header className="header">
               <div className="menu">
-                <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
-                <ul className="nav-list">
-                    <li><Link to="/MovieRanking" className="nav-lis--link">MovieRanking</Link></li>
-                    <li><Link to="/Discover" className="nav-lis--link">Discover</Link></li>
-                    <li><Link to="/"><Search handleOnClick={this.handleOnClick}/></Link></li>
-                </ul>
+                <div className="container">
+                  <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
+                  <ul className="nav-list">
+                      <li><Link to="/MovieRanking" className="nav-lis--link">MovieRanking</Link></li>
+                      <li><Link to="/Discover" className="nav-lis--link">Discover</Link></li>
+                      <li><Link to="/"><Search handleOnClick={this.handleOnClick}/></Link></li>
+                  </ul>
+                </div>
               </div>
               <Switch>
               <Route exact path='/' render={() => (

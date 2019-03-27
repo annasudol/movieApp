@@ -5,16 +5,14 @@ import Movie from './Movie'
 
 export default class Results extends Component {
 state= {
-    showDetails: false,
-    movie: [],
+    movie: {},
 }
-  shouldComponentUpdate(nextProps) {
-        return this.props.results !== nextProps.results;
+  shouldComponentUpdate(nextState, nextProps) {
+        return this.props.results !== nextProps.results || this.state.movie !== nextState.movie;
   }
 
   findGeneres=(id)=>{
       const IDs = this.props.generes.filter(result=> result.id === id)
-
       return IDs && IDs[0].name
   }
   
@@ -24,17 +22,18 @@ state= {
 
   showDetails=(id)=>{
 
-    this.setState({showDetails: true});
-    getMovie(id)
-    .then(movie=>this.setState({movie}))
-    .catch(error=>{
-      console.warn(error)
-    })
-    console.log('movie', this.state.movie)
+  id && getMovie(id)
+  .then(movie=>this.setState({movie}))
+    
+  }
+
+  closeDetails=()=>{
+      this.setState({movie: {}})
   }
   render() {
     const { list, results } = this.props
     const { movie } = this.state
+
     return (
       <div className="results">
         <h2>{results.total_results ? results.total_results : "No"} results</h2>
@@ -55,7 +54,7 @@ state= {
             <i className={results.page === 1 ? "counter__icon--no-display" : "counter__icon"} onClick={()=>this.handleChangePage(results.page - 1)}></i>
             <span>Page {results.page} of {results.total_pages}</span><i className={results.page === results.total_pages ? "counter__icon--no-display" : "counter__icon counter__icon--next"} onClick={()=>this.handleChangePage(results.page + 1)}></i>
         </div>
-       
+       {Object.values(this.state.movie).length > 0 && <Movie movieData={movie} showDetails={true} closeDetails={this.closeDetails}/>}
       </div>
     )
   }
