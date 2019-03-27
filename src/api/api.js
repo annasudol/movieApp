@@ -14,8 +14,8 @@ export const getSearchQueryMovie = async (query) => {
   };
 
 
-export const discoverMovie = async (popularity, year_min, year_max, generes) => {
-    const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&language=en-US&sort_by=${popularity}&include_adult=false&include_video=false&release_date.gte=${year_min}&release_date.lte=${year_max}&with_genres=${generes}`);
+export const discoverMovie = async (popularity, year_min, year_max, generes, page = 1) => {
+    const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&language=en-US&sort_by=${popularity}&include_adult=false&include_video=false&page=${page}&release_date.gte=${year_min}&release_date.lte=${year_max}&with_genres=${generes}`);
     const resJSON = await res.json();
     return resJSON;
   };

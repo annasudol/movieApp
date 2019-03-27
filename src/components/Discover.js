@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { discoverMovie, getGeneres } from '../api/api'
 import InputRange from 'react-input-range';
+import Results from './Results'
 
-import PropTypes from 'prop-types'
 
 export class Discover extends Component {
   state={
@@ -69,33 +69,45 @@ export class Discover extends Component {
     })
   
   }
+  changePage=(page)=>{
+    const { popularity, years, generes } = this.state
+    discoverMovie(popularity, years.min, years.max, generes, page)
+    .then(movie=>this.setState({movie}))
+    .catch(error=>{
+      console.warn(error)
+    })
+  }
 
 
   render() {
-    const { generesAll } = this.state;
+    const { generesAll, movie } = this.state;
     const popularity = [ {"popularity.desc": "Popularity descending"},  {"revenue.asc": "Revenue ascending"}, {"revenue.desc": "Revenue descending"}]
     const year = new Date().getFullYear()
-    console.log(this.state.movie)
+
     return (
-      <div className="form">
-        <form>
-          <select className="default-input option-menu" onChange={this.handleChangePopularity}>
-            {popularity.map((el, i)=><option value={Object.keys(el)} key={i}>{Object.values(el)}</option>)}
-          </select>
-          <select className="default-input option-menu" onChange={this.handleChangeGenere}>
-            {generesAll.map((generes)=><option value={generes['id']} key={generes['id']}>{generes['name']}</option>)}
-          </select>
-          <div className="form__range">
-            <InputRange
-              draggableTrack
-              maxValue={year}
-              minValue={1940}
-              onChange={this.handleChangeYears}
-              value={this.state.years} 
-            />
-          </div>
-        </form>
+     <div className="discover">
+        <div className="form">
+          <form>
+            <select className="default-input option-menu" onChange={this.handleChangePopularity}>
+              {popularity.map((el, i)=><option value={Object.keys(el)} key={i}>{Object.values(el)}</option>)}
+            </select>
+            <select className="default-input option-menu" onChange={this.handleChangeGenere}>
+              {generesAll.map((generes)=><option value={generes['id']} key={generes['id']}>{generes['name']}</option>)}
+            </select>
+            <div className="form__range">
+              <InputRange
+                draggableTrack
+                maxValue={year}
+                minValue={1940}
+                onChange={this.handleChangeYears}
+                value={this.state.years} 
+              />
+            </div>
+          </form>
+         
       </div>
+      <Results results={movie} list={movie.results} generes={generesAll} changePage={this.changePage}/>
+     </div>
     )
   }
 }

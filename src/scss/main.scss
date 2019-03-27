@@ -2,6 +2,7 @@
 @import 'variables';
 @import 'mixins';
 @import 'input-range/input-range';
+@import 'styles/results';
 @import 'styles/header';
 @import 'styles/movie';
 @import 'styles/suggestions';
@@ -15,7 +16,7 @@
 
 body {
     overflow: auto;
-    background-color: $darkgrey;
+    background-color: $dark;
     min-height: 700px;
 }
 

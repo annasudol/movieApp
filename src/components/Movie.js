@@ -20,7 +20,6 @@ class Movie extends Component {
         const posterImg = data['poster_path'] ? 'https://image.tmdb.org/t/p/original/' + data['poster_path'] : image;
         const style = {backgroundImage:  'url(' + backdropImg +')'};
         return (
-            
             <div className="movie" style={style}>
                {this.state.loading ?  <div className="movie__item"><div className="loader"><Loader type="Puff" className="loader" color="#00BFFF" height="200" width="200"/></div> </div>  : (
                 <div className="movie__item">

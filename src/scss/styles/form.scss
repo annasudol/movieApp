@@ -1,18 +1,24 @@
 
+.discover {
+    display: block;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 110px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
+}
 .form {
     width: calc(100% - 20px);
     height: 300px;
     padding: 0;
     z-index: 1;
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    top: 110px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+
 
     form {
         display: flex;
