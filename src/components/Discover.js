@@ -13,17 +13,10 @@ export class Discover extends Component {
         min: 1990,
         max: 2010,
     },
-    generesAll: []
   }
 
   componentDidMount() {
     const {popularity, years, generes} = this.state
-
-    getGeneres()
-    .then(generes=>this.setState({generesAll: generes['genres']}))
-    .catch(error=>{
-      console.warn(error)
-    })
 
     discoverMovie(popularity, years.min, years.max, generes)
     .then(movie=>this.setState({movie}))
@@ -33,21 +26,22 @@ export class Discover extends Component {
   }
 
   handleChangePopularity=(event)=>{
-    const {popularity, years, generes} = this.state
+    const {years, generes} = this.state
     this.setState({popularity: event.target.value});
     
-    discoverMovie(popularity, years.min, years.max, generes)
+    discoverMovie(event.target.value, years.min, years.max, generes)
     .then(movie=>this.setState({movie}))
     .catch(error=>{
       console.warn(error)
     })
   }
+
   handleChangeGenere=(event)=>{
-    const {popularity, years, generes} = this.state
+    const {popularity, years} = this.state
 
     this.setState({generes: event.target.value});
     
-    discoverMovie(popularity, years.min, years.max, generes)
+    discoverMovie(popularity, years.min, years.max, event.target.value)
     .then(movie=>this.setState({movie}))
     .catch(error=>{
       console.warn(error)
@@ -67,8 +61,8 @@ export class Discover extends Component {
     .catch(error=>{
       console.warn(error)
     })
-  
   }
+
   changePage=(page)=>{
     const { popularity, years, generes } = this.state
     discoverMovie(popularity, years.min, years.max, generes, page)
@@ -78,10 +72,10 @@ export class Discover extends Component {
     })
   }
 
-
   render() {
-    const { generesAll, movie } = this.state;
-    const popularity = [ {"popularity.desc": "Popularity descending"},  {"revenue.asc": "Revenue ascending"}, {"revenue.desc": "Revenue descending"}]
+    const { movie } = this.state;
+    const { generesAll } = this.props;
+    const popularity = [{"popularity.desc": "The most popular"}, {"popularity.asc": "Least popular"}, {"revenue.desc": "The highest revenue"}, {"revenue.asc": "The lowest revenue"}, {"original_title.desc": "By Title"}]
     const year = new Date().getFullYear()
 
     return (

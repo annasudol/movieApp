@@ -5,7 +5,7 @@ import NoMatch from './components/NoMatch';
 import Movie from './components/Movie'
 import logo from './images/svg/logo.svg'
 import Search from './components/Search'
-import { getMovie } from './api/api'
+import { getMovie, getGeneres } from './api/api'
 
 
 
@@ -17,22 +17,30 @@ class App extends Component {
     this.state = {
       movie: [],
       input: '',
+      generesAll: []
     }
   }
 
 
   componentDidMount() {
-    getMovie()
-    .then(movie=>this.setState({loading: false, movie}))
+    getGeneres()
+    .then(generes=>this.setState({generesAll: generes['genres']}))
     .catch(error=>{
       console.warn(error)
     })
+
+    getMovie()
+    .then(movie=>this.setState({movie}))
+    .catch(error=>{
+      console.warn(error)
+    })
+
 
   }
 
   handleOnClick=(id)=>{
     getMovie(id)
-    .then(movie=>this.setState({loading: false, movie}))
+    .then(movie=>this.setState({movie}))
     .catch(error=>{
       console.warn(error)
     })
@@ -43,28 +51,29 @@ class App extends Component {
     return this.state.movie !== nextState.movie;
   }
 
-  render() {
-    console.log('app',this.state.movie)
+  updateMovie=(movie)=>{
+    this.setState({movie})
+  }
 
+  render() {
+    const { generesAll, movie } = this.state
+ 
     return (
       <Router>
         <section className="movie-app">
           <header className="header">
               <div className="menu">
-                <div className="container">
+                <div className="container-menu">
                   <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
                   <ul className="nav-list">
-                      <li><Link to="/MovieRanking" className="nav-lis--link">MovieRanking</Link></li>
-                      <li><Link to="/Discover" className="nav-lis--link">Discover</Link></li>
+                      <li><Link to="/discover" className="nav-lis--link">Discover</Link></li>
                       <li><Link to="/"><Search handleOnClick={this.handleOnClick}/></Link></li>
                   </ul>
                 </div>
               </div>
               <Switch>
-              <Route exact path='/' render={() => (
-                <Movie movieData={this.state.movie}/>
-              )} />
-                <Route component={Discover}/>
+                <Route exact path='/' render={() => (<Movie movieData={movie} generesAll={generesAll}  updateMovie={this.updateMovie}/>)} />
+                <Route path='/discover' render={() => (<Discover generesAll={generesAll}/>)}/>
                 <Route component={NoMatch}/>
               </Switch>
   

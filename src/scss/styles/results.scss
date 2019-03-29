@@ -48,6 +48,9 @@
 
 }
 
+
+
+
 .results-text {
     padding: 5px;
     overflow: hidden;
@@ -131,4 +134,10 @@
        }
     }
    
+}
+
+.movie__results {
+    width: 100%;
+    flex: 1 1 100%;
+
 }

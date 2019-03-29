@@ -1,17 +1,44 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import formatter from '../api/helpers'
-import Loader from 'react-loader-spinner'
+import Similar from './Similar'
 import image from '../images/png/noimage.png'
-class Movie extends Component {
-    state={ loading: false }
+import { getSimilar } from '../api/api'
 
+class Movie extends Component {
+    state= {
+       id: 76341,
+       list: []
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({id: nextProps.movieData['id']});
+        
+        getSimilar(nextProps.movieData['id'])
+        .then(list=>this.setState({list}))
+        .catch(error=>{
+        console.warn(error)
+        })
+    }
+
+    componentDidMount(){
+
+        getSimilar(this.state.id)
+        .then(list=>this.setState({list}))
+        .catch(error=>{
+        console.warn(error)
+        })
+    }
     handleShowDetails=()=>{
         this.props.closeDetails()
     }
-    render() {
-        const { showDetails } = this.props;
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.state.list !== nextState.list;
+    }
 
+    render() {
+        const { showDetails, generesAll } = this.props;
+        const { list } = this.state;
         const data = this.props.movieData;
         const title =data['title'];
         const overview = data['overview'];
@@ -25,15 +52,14 @@ class Movie extends Component {
         const backdropImg = 'https://image.tmdb.org/t/p/original/' + data['backdrop_path'];
         const posterImg = data['poster_path'] ? 'https://image.tmdb.org/t/p/original/' + data['poster_path'] : image;
         const style = {backgroundImage:  'url(' + backdropImg +')'};
-        const none = {backgroundImage: 'none'}
        
         return (
-            <div className="movie" style={showDetails ? {backgroundImage: 'none'} : style}>
-               {/* {this.state.loading ?  <div className="movie__item"><div className="loader"><Loader type="Puff" className="loader" color="#00BFFF" height="200" width="200"/></div> </div>  : ( */}
+          <div>
+                <div className="movie" style={showDetails ? {backgroundImage: 'none'} : style}>
                 <div className="movie-background" style={!showDetails ? {display: 'none'} : {display: 'fixed'} }>
                     <button className="movie-close-btn" onClick={this.handleShowDetails}><span className="movie-close-icon"></span></button>
                 </div>
-                <div className="movie__item" style={showDetails && {bottom: '20%'} }>
+                <div className="movie__item" style={showDetails && {bottom: '10%'} }>
                     <div className="movie__text">
                         <h1>{title}</h1>
                         {generes && generes.map(genere => <p>{genere.name}, </p> )}
@@ -48,10 +74,15 @@ class Movie extends Component {
                         <div className="movie__overview movie__overview--text"><p>{overview}</p></div>
                     </div>
                     <div className="movie__image"><img src={posterImg} alt="poster"/></div>
-                    <div className="movie__overview"><p>{overview}</p></div>       
+                    <div className="movie__overview"><p>{overview}</p> 
+
+                    </div>
+                    {!showDetails && <Similar list={list.results} generes={generesAll} updateMovie={this.props.updateMovie}/> }    
                 </div>
-               )}
+
             </div>
+            
+          </div>
         );
     }
 }

@@ -1,6 +1,6 @@
 .movie {
     width: 100%;
-    height: 100vh;
+    height: 220vh;
     background-position: center center;
     background-size: cover;
     overflow: visible;
@@ -8,27 +8,31 @@
     padding-top: 180px;
     align-items: center;
     justify-content: center;
-    // z-index: -1;
     position: absolute;
-    top: 0;
+    top: 200px;
     left: 0;
     bottom: 0;
 
     @media (min-width: $tablet) {
-        padding-top: 80px;
+        top: 100px;
+        height: 140vh;
+    }
 
+    @media (min-width: $small) {
+        top: 80px;
     }
     
 }
 
 .movie__item {
     width: calc(100% - 40px);
-    min-height: 500px;
+    min-height: 1500px;
     border-radius: 5px;
     background-color: rgba(#0B0C10, 0.8);
     max-width: 1000px;
     z-index: 500;
     position: relative;
+    bottom: 120px;
 
 
     @media (min-width: $tablet) {
@@ -36,9 +40,14 @@
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
+        bottom: 80px;
+        min-height: 1000px;
     }
+
     @media (min-width: $small) {
         width: calc(100% - 100px);
+        bottom: 140px;
+        min-height: 800px;
     }
 }
 
@@ -197,7 +206,7 @@
     background-color: rgba(#000, 0.9);
     z-index: 0;
     overflow: hidden;
-    height: 700px;
+    height: 800px;
     width: 100vw;
     max-width: 1000px;
     border: 1px solid $lightgrey;
@@ -209,6 +218,7 @@
     height: 50px;
     position: relative;
     top: 15px;
+    left: 30px;
     cursor: pointer;
     background: none;
     border: 2px solid rgba(#fff, 0.7);
