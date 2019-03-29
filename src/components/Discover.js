@@ -89,6 +89,7 @@ export class Discover extends Component {
               {generesAll.map((generes)=><option value={generes['id']} key={generes['id']}>{generes['name']}</option>)}
             </select>
             <div className="form__range">
+              <h3>Filter by release date</h3>
               <InputRange
                 draggableTrack
                 maxValue={year}

@@ -43,7 +43,17 @@
 
 .form__range {
     flex: 1 0 70%;
-    margin: 25px 20px 0;
+    margin: 0 0 0 20px;
+    position: relative;
+    bottom: 20px;
+
+    h3 {
+        @extend .lato;
+        font-weight: 400;
+        color: $lightgrey;
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
 
     @media (min-width: $small) {
         margin: 15px 0 0 20px;

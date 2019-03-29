@@ -1,7 +1,4 @@
-.no-suggestions {
-  color: #999;
-  padding: 0.5rem;
-}
+
 
 .suggestions {
   background-color: rgba(#000, 0.9);
@@ -16,9 +13,10 @@
   width: 250px;
   z-index: 1000;
   position: relative;
+  top: 5px;
 
   @media (min-width: $tablet) {
-    top: 40px;
+    top: 70px;
   }
 
   @media (min-width: $small) {

@@ -128,6 +128,18 @@
         min-width: 230px;
         display: inline-block;
 
+        @media (min-width: $tablet) {
+            position: absolute;
+            right: 0;
+            top: 0px;
+        }
+
+        @media (min-width: $small) {
+            top: 0;
+            right: 415px;
+          }
+        
+
     }
 
     input {

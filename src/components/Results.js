@@ -34,8 +34,7 @@ export default class Results extends Component {
   render() {
     const { list, results } = this.props
     const { movie } = this.state
-    // const posterImg = data['poster_path'] ? 'https://image.tmdb.org/t/p/original/' + data['poster_path'] : image;
-
+    console.log(results.total_results)
     return (
       <div className="results">
         <h2>{results.total_results ? results.total_results : "No"} results</h2>
@@ -52,7 +51,7 @@ export default class Results extends Component {
               </div>
           </li>)}
         </ul>
-        <div class="page-counter">
+        <div class="page-counter" style={results.total_results ? {display: 'flex'} : {display: 'none'} }>
             <i className={results.page === 1 ? "counter__icon--no-display" : "counter__icon"} onClick={()=>this.handleChangePage(results.page - 1)}></i>
             <span>Page {results.page} of {results.total_pages}</span><i className={results.page === results.total_pages ? "counter__icon--no-display" : "counter__icon counter__icon--next"} onClick={()=>this.handleChangePage(results.page + 1)}></i>
         </div>

@@ -59,7 +59,7 @@ class Movie extends Component {
                 <div className="movie-background" style={!showDetails ? {display: 'none'} : {display: 'fixed'} }>
                     <button className="movie-close-btn" onClick={this.handleShowDetails}><span className="movie-close-icon"></span></button>
                 </div>
-                <div className="movie__item" style={showDetails && {bottom: '10%'} }>
+                <div className="movie__item" style={showDetails && {bottom: '25%', minHeight: '400px'} }>
                     <div className="movie__text">
                         <h1>{title}</h1>
                         {generes && generes.map(genere => <p>{genere.name}, </p> )}
@@ -77,7 +77,7 @@ class Movie extends Component {
                     <div className="movie__overview"><p>{overview}</p> 
 
                     </div>
-                    {!showDetails && <Similar list={list.results} generes={generesAll} updateMovie={this.props.updateMovie}/> }    
+                    {!showDetails && <Similar list={list.results} generes={generesAll} updateMovie={this.props.updateMovie}/> }
                 </div>
 
             </div>
