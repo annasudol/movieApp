@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { getSearchQueryMovie, getMovie } from '../api/api'
+import { getSearchQueryMovie } from '../api/api'
 class Search extends Component {
 
   constructor(props) {

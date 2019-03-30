@@ -47,7 +47,7 @@ class App extends Component {
 
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextState) {
     return this.state.movie !== nextState.movie;
   }
 

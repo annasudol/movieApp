@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { discoverMovie, getGeneres } from '../api/api'
+import { discoverMovie } from '../api/api'
 import InputRange from 'react-input-range';
 import Results from './Results'
+import PropTypes from 'prop-types'
 
 
 export class Discover extends Component {
@@ -105,6 +106,9 @@ export class Discover extends Component {
      </div>
     )
   }
+}
+Discover.propTypes = {
+  generesAll: PropTypes.array
 }
 
 export default Discover
