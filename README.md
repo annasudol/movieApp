@@ -1,70 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TMDb Movie Search
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/SKempin/reactjs-tmdb-app/blob/master/LICENCE)
+[![GitHub stars](https://img.shields.io/github/stars/SKempin/reactjs-tmdb-app.svg?style=flat-square)](https://github.com/SKempin/reactjs-tmdb-app/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/SKempin/reactjs-tmdb-app.svg?style=flat-square)](https://github.com/SKempin/reactjs-tmdb-app/network)
+[![Mentioned in Awesome React](https://awesome.re/mentioned-badge.svg)](https://github.com/enaqx/awesome-react)
 
-![](https://github.com/annasudol/movieApp/blob/master/src/images/video.mp4)
+TMDb Movie Search is a responsive [React](http://facebook.github.io/react/index.html) app that utilises Twitter's [typeahead.js](https://twitter.github.io/typeahead.js/) and [Bloodhound](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md) suggestion engine, loading data via [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api).
 
-## Available Scripts
+![](https://github.com/SKempin/reactjs-tmdb-app/blob/master/docs/images/tmdb-demo.gif)
 
-In the project directory, you can run:
+## Demo
+[TMDb Movie Search - Live DEMO](https://skempin.github.io/reactjs-tmdb-app/)
 
-### `npm start`
+## Tools
+Key tools used in this React project are:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+| Tool             | Description   |
+| :-------------:|--------------|
+| [React](http://facebook.github.io/react/index.html) | A JavaScript library for building user interfaces |
+| [Typeahead.js](https://twitter.github.io/typeahead.js/) | A flexible JavaScript library that provides a strong foundation for building robust typeaheads |
+| [Bloodhound](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md) | Bloodhound is the typeahead.js suggestion engine |
+| [Bootstrap](http://getbootstrap.com/) | Build responsive, mobile-first projects on the web with the world's most popular front-end component library |
+| [SASS](http://sass-lang.com/) | 	Sass is the most mature, stable, and powerful professional grade CSS extension language in the world |
+| [Browserify](http://browserify.org/) | Browserify lets you `require('modules')` in the browser by bundling up all of your dependencies |
+| [Babel](https://babeljs.io/) | Use next generation JavaScript, today |
+| [Gulp](http://gulpjs.com/) | Gulp is a toolkit for automating painful or time-consuming tasks in your development workflow |
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Installation
+[node.js](http://nodejs.org/download/) is required to get ``npm``.
 
-### `npm test`
+If you would like to download the code and try it for yourself:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repo: `git@github.com:SKempin/reactjs-tmdb-app.git`
+2. `cd reactjs-tmdb-app`
+2. Install packages: `npm install` and `bower install`
+3. Build project and launch: `gulp watch`
+4. Open your browser at: `http://localhost:9000`
 
-### `npm run build`
+## Browser Support
+This project makes usage of the Fetch API, utilising a polyfill for older browsers.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Chrome 42+
+- Firefox 39+
+- Safari 10+ (with polyfill)
+- Internet Explorer 11+ (with polyfill)
+- Edge 14+
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Node.js
+Supports LTS version (v6).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Author
+[Stephen Kempin](https://www.stephenkempin.co.uk)
 
-### `npm run eject`
+[SK-UK Google Play Store](https://play.google.com/store/apps/developer?id=SK+-+UK)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Donate :coffee:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you like this project and wish to say to say thanks - I'm always open to a coffee!
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<a href="https://www.buymeacoffee.com/oru9CZh" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/black_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
+[MIT](https://github.com/SKempin/reactjs-tmdb-app/blob/master/LICENCE)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+You are welcome to use this however you wish within the MIT license, but please retain [my credentials](https://www.stephenkempin.co.uk/) and links back to [this repo](https://github.com/SKempin/reactjs-tmdb-app).
