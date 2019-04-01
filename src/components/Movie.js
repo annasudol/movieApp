@@ -32,7 +32,7 @@ class Movie extends Component {
     handleShowDetails=()=>{
         this.props.closeDetails()
     }
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate(nextState) {
         return this.state.list !== nextState.list;
     }
 
@@ -45,6 +45,8 @@ class Movie extends Component {
         const relaseDate = data['release_date'];
         const popularity = parseInt(data['popularity'])
         const generes = data['genres'];
+        const firstGen = generes && generes.slice(0, generes.length - 1);
+        const lastGen = generes && generes.slice(generes.length - 1);
         const runtime = data['runtime'];
         const rating = data['vote_average'];
         const budget = data['budget'];
@@ -52,6 +54,7 @@ class Movie extends Component {
         const backdropImg = 'https://image.tmdb.org/t/p/original/' + data['backdrop_path'];
         const posterImg = data['poster_path'] ? 'https://image.tmdb.org/t/p/original/' + data['poster_path'] : image;
         const style = {backgroundImage:  'url(' + backdropImg +')'};
+  
        
         return (
           <div>
@@ -62,9 +65,10 @@ class Movie extends Component {
                 <div className="movie__item" style={showDetails && {bottom: '25%', minHeight: '400px'} }>
                     <div className="movie__text">
                         <h1>{title}</h1>
-                        {generes && generes.map(genere => <p>{genere.name}, </p> )}
+                        {firstGen && firstGen.map(genere => <p>{genere.name}, </p> )}
+                        {lastGen && <p>{lastGen[0].name}</p> }
                         <div className="movie__details">
-                           <div className="movie__el"><span>Rating:</span><p>{rating}</p></div>
+                           <div className="movie__el"><span>Rating:</span><p>{rating}/10</p></div>
                            <div className="movie__el"><span>Popularity</span><p>{popularity}</p></div>
                            <div className="movie__el"><span>Release date:</span><p>{relaseDate ? relaseDate : 'no Data'}</p></div>
                            <div className="movie__el"><span>Run Time:</span><p>{runtime ? runtime : 'no Data'}</p></div>

@@ -27,7 +27,6 @@ export default class Similar extends Component {
             slidesToShow: 1,
             slidesToScroll: 1
           };
-        console.log(results && results.map((result)=>result))
             
         return (
             <div className="similar">

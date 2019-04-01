@@ -31,10 +31,11 @@ export default class Results extends Component {
   closeDetails=()=>{
       this.setState({movie: {}})
   }
+  
   render() {
     const { list, results } = this.props
     const { movie } = this.state
-    console.log(results.total_results)
+
     return (
       <div className="results">
         <h2>{results.total_results ? results.total_results : "No"} results</h2>
@@ -44,9 +45,9 @@ export default class Results extends Component {
               <img src={result.poster_path ? 'https://image.tmdb.org/t/p/original/' + result.poster_path : image} alt={`${result.title} poster`}/>
               <div className="results-text">
                   <h3>{result.title}</h3>
-                  <h4>Generes: {result.genre_ids.length && result.genre_ids.map(id=> <span>{this.findGeneres(id)}, </span>)}</h4>
+                  <h4>Generes: {result.genre_ids.length && result.genre_ids.slice(0, result.genre_ids.length - 1).map(id=> <span>{this.findGeneres(id)}, </span>)} {result.genre_ids.length && result.genre_ids.slice(result.genre_ids.length - 1).map(id=> <span>{this.findGeneres(id)} </span>)} </h4>
                   <h4>Popularity: <span>{parseInt(result.popularity)}</span></h4>
-                  <h4>Vote: <span>{result.vote_average}</span></h4>
+                  <h4>Vote: <span>{result.vote_average} /10</span></h4>
                   <h4>Release Date: <span className="results-date">{result.release_date}</span></h4>
               </div>
           </li>)}

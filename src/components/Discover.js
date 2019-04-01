@@ -50,14 +50,14 @@ export class Discover extends Component {
   }
 
   handleChangeYears=(event)=>{
-    const { popularity, years, generes } = this.state
+    const { popularity, generes } = this.state
 
     this.setState(()=>({years: {
       min: event.min,
       max: event.max
     }}));
   
-    discoverMovie(popularity, years.min, years.max, generes)
+    discoverMovie(popularity, event.min, event.max, generes)
     .then(movie=>this.setState({movie}))
     .catch(error=>{
       console.warn(error)
