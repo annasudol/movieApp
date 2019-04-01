@@ -22,7 +22,7 @@ Key tools used in this React project are:
 
 ## Installation
 
-1. Clone the repo: `https://github.com/annasudol/movieApp.git`
+1. Clone the repo: `https://github.com/annasudol/movieapp.git`
 2. `cd movieApp`
 2. Install packages: `npm install`
 3. Build project and launch: `npm start`
