@@ -5,7 +5,8 @@ A responsive [React](http://facebook.github.io/react/index.html) app loading dat
 ![](https://github.com/annasudol/movieApp/blob/master/src/images/gif.gif)
 
 ## Demo
-[TMDb Movie Search - Live DEMO](https://annasudol.github.io/movieApp/)
+[TMDb Movie Search - Live DEMO](https://annasudol.github.io/movieApp
+/)
 
 ## Tools
 Key tools used in this React project are:
