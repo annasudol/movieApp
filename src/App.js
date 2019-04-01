@@ -64,7 +64,7 @@ class App extends Component {
           <header className="header">
               <div className="menu">
                 <div className="container-menu">
-                  <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
+                  <Link to="/movieApp"><img src={logo} className="logo" alt="logo" /></Link>
                   <ul className="nav-list">
                       <li><Link to="/discover" className="nav-lis--link">Discover</Link></li>
                       <li><Link to="/movieApp"><Search handleOnClick={this.handleOnClick}/></Link></li>
@@ -72,7 +72,7 @@ class App extends Component {
                 </div>
               </div>
               <Switch>
-                <Route exact path='/movieApp' render={() => (<Movie movieData={movie} generesAll={generesAll}  updateMovie={this.updateMovie}/>)} />
+                <Route path='/movieApp' render={() => (<Movie movieData={movie} generesAll={generesAll}  updateMovie={this.updateMovie}/>)} />
                 <Route path='/discover' render={() => (<Discover generesAll={generesAll}/>)}/>
                 <Route component={NoMatch}/>
               </Switch>
