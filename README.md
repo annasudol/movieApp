@@ -5,8 +5,7 @@ A responsive [React](http://facebook.github.io/react/index.html) app loading dat
 ![](https://github.com/annasudol/movieApp/blob/master/src/images/gif.gif)
 
 ## Demo
-[TMDb Movie Search - Live DEMO](https://annasudol.github.io/movieApp
-/)
+[Movie React App - Live DEMO](https://annasudol.github.io/movieapp/)
 
 ## Tools
 Key tools used in this React project are:
@@ -22,7 +21,7 @@ Key tools used in this React project are:
 
 ## Installation
 
-1. Clone the repo: `https://github.com/annasudol/movieApp.git`
+1. Clone the repo: `https://github.com/annasudol/movieapp.git`
 2. `cd movieApp`
 2. Install packages: `npm install`
 3. Build project and launch: `npm start`
