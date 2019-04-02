@@ -39,7 +39,7 @@ export default class Similar extends Component {
                         <div className="similar__text">
                             <h3>{result.title}</h3>
                             <h4>Release Date: <span className="results-date">{result.release_date}</span></h4>
-                            <h4>Generes: {result.genre_ids.length && result.genre_ids.map(id=> <span>{this.findGeneres(id)}, </span>)}</h4>
+                            <h4>Generes: {result.genre_ids.length && result.genre_ids.slice(0, result.genre_ids.length - 1).map(id=> <span>{this.findGeneres(id)}, </span>)} {result.genre_ids.length && result.genre_ids.slice(result.genre_ids.length - 1).map(id=> <span>{this.findGeneres(id)} </span>)} </h4>
                             <p className="similar__overview">{result.overview}</p>
                         </div>
                     </div>

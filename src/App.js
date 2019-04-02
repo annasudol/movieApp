@@ -57,7 +57,6 @@ class App extends Component {
 
   render() {
     const { generesAll, movie } = this.state
- 
     return (
       <Router>
         <section className="movie-app">
