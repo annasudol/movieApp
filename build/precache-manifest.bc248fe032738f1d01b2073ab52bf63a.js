@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/movieapp/static/js/runtime~main.063273b0.js"
   },
   {
-    "revision": "e4512d34cf4852662158",
-    "url": "/movieapp/static/js/main.e4512d34.chunk.js"
+    "revision": "b624ecd899f1dee64785",
+    "url": "/movieapp/static/js/main.b624ecd8.chunk.js"
   },
   {
     "revision": "f696e9893033a4fe4821",
     "url": "/movieapp/static/js/2.f696e989.chunk.js"
   },
   {
-    "revision": "e4512d34cf4852662158",
+    "revision": "b624ecd899f1dee64785",
     "url": "/movieapp/static/css/main.aa74d62f.chunk.css"
   },
   {
-    "revision": "7b7914b72082840938604e9056009bea",
+    "revision": "ab2be1f933b3566210766faa67965d75",
     "url": "/movieapp/index.html"
   }
 ];

@@ -6,6 +6,7 @@ import Movie from './components/Movie'
 import logo from './images/svg/logo.svg'
 import Search from './components/Search'
 import { getMovie, getGeneres } from './api/api'
+import ReactLoading from 'react-loading';
 
 
 
@@ -17,7 +18,8 @@ class App extends Component {
     this.state = {
       movie: [],
       input: '',
-      generesAll: []
+      generesAll: [],
+      loading: true
     }
   }
 
@@ -30,7 +32,7 @@ class App extends Component {
     })
 
     getMovie()
-    .then(movie=>this.setState({movie}))
+    .then(movie=>this.setState({movie, loading: false}))
     .catch(error=>{
       console.warn(error)
     })
@@ -56,10 +58,13 @@ class App extends Component {
   }
 
   render() {
-    const { generesAll, movie } = this.state
+    const { generesAll, movie, loading } = this.state
+
     return (
       <Router>
         <section className="movie-app">
+        {loading && <div className="loading"><ReactLoading type={'spin'} color={'#66FCF1'} height={200} width={200} /></div>}
+
           <header className="header">
               <div className="menu">
                 <div className="container-menu">

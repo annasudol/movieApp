@@ -25,5 +25,5 @@ Key tools used in this React project are:
 2. `cd movieApp`
 2. Install packages: `npm install`
 3. Build project and launch: `npm start`
-4. Open your browser at: `http://localhost:3000`
+4. Open your browser at: `http://localhost:3000/movieApp`
 

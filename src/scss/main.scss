@@ -31,6 +31,24 @@
     }
 }
 
+.loading {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 750px;
+    background-color: $dark;
+    z-index: 1500;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding: 100px 30px;
+
+
+}
+
 body {
     overflow: auto;
     background-color: $dark;
