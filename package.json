@@ -44,6 +44,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "start": "PORT=3000/movieApp react-scripts start"
+  ]
 }

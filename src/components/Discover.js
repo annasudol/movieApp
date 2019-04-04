@@ -3,6 +3,7 @@ import { discoverMovie } from '../api/api'
 import InputRange from 'react-input-range';
 import Results from './Results'
 import PropTypes from 'prop-types'
+import ReactLoading from 'react-loading';
 
 
 export class Discover extends Component {
@@ -14,13 +15,14 @@ export class Discover extends Component {
         min: 1990,
         max: 2010,
     },
+    loading: true
   }
 
   componentDidMount() {
     const {popularity, years, generes} = this.state
 
     discoverMovie(popularity, years.min, years.max, generes)
-    .then(movie=>this.setState({movie}))
+    .then(movie=>this.setState({movie, loading: false}))
     .catch(error=>{
       console.warn(error)
     })
@@ -74,7 +76,7 @@ export class Discover extends Component {
   }
 
   render() {
-    const { movie } = this.state;
+    const { movie, loading } = this.state;
     const { generesAll } = this.props;
     const popularity = [{"popularity.desc": "The most popular"}, {"popularity.asc": "Least popular"}, {"revenue.desc": "The highest revenue"}, {"revenue.asc": "The lowest revenue"}, {"original_title.desc": "By Title"}]
     const year = new Date().getFullYear()
@@ -102,7 +104,8 @@ export class Discover extends Component {
           </form>
          
       </div>
-      <Results results={movie} list={movie.results} generes={generesAll} changePage={this.changePage}/>
+      {loading ? <div className="loading"><ReactLoading type={'spin'} color={'#66FCF1'} height={200} width={200} /></div>: <Results results={movie} list={movie.results} generes={generesAll} changePage={this.changePage}/>}
+
      </div>
     )
   }

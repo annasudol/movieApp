@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect} from "react-router-dom";
 import Discover from './components/Discover'
 import NoMatch from './components/NoMatch';
 import Movie from './components/Movie'
@@ -76,7 +76,8 @@ class App extends Component {
                 </div>
               </div>
               <Switch>
-                <Route path='/movieApp' render={() => (<Movie movieData={movie} generesAll={generesAll}  updateMovie={this.updateMovie}/>)} />
+                <Route exact path="/" render={() => (<Redirect to="/movieApp"/>)}/>
+                <Route path="/movieApp" render={() => (<Movie movieData={movie} generesAll={generesAll}  updateMovie={this.updateMovie}/>)} />)}/>
                 <Route path='/discover' render={() => (<Discover generesAll={generesAll}/>)}/>
                 <Route component={NoMatch}/>
               </Switch>
