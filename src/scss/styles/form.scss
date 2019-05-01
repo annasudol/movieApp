@@ -1,0 +1,105 @@
+
+.discover {
+    display: block;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 160px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @media (min-width: $tablet) {
+        top: 110px;
+    }
+
+}
+.form {
+    width: calc(100% - 20px);
+    height: 300px;
+    padding: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1000px;
+        flex: 1 0 90%;
+        justify-content: center;
+        align-items: flex-start;
+  
+        @media (min-width: $small) {
+            flex-wrap: nowrap;
+            flex: 1 1 100%;
+        }
+    }
+
+  
+}
+
+.form__range {
+    flex: 1 0 70%;
+    margin: 20px 0 0 20px;
+    position: relative;
+    bottom: 20px;
+
+    h3 {
+        @extend .lato;
+        font-weight: 400;
+        color: $lightgrey;
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    @media (min-width: $small) {
+        margin: 15px 0 0 20px;
+        flex: 1 0 60%;
+    }
+}
+
+label,
+select,
+button,
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"],
+input[type="button"] {
+  position: relative;
+  cursor: pointer;
+  border:0;
+  outline:none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  @media (min-width: $small) {
+        margin-left: 10px;
+    }
+}
+
+
+
+/* Default Inputs */
+.default-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  width: calc(100% - 20px);
+  color: #999;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.label-input {
+  padding-left:60px;
+}
+
+/* Option Menu / Select Menu */
+.option-menu {
+    background-color: transparent;
+    background: url('../images/svg/left-arrow.svg') no-repeat center right/ contain;
+}
+
