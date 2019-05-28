@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       movie: [],
-      input: '',
+      // input: '',
       generesAll: [],
       loading: true
     }

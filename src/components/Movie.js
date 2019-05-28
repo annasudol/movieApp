@@ -58,7 +58,7 @@ class Movie extends Component {
        
         return (
           <div className={showDetails && 'movie-sample'}>
-                <div className="movie" style={showDetails ? {backgroundImage: 'none'} : style}>
+                <div className="movie" style={showDetails ? {backgroundImage: 'none', position: 'absolute', top: '5px', left: '10px', zIndex: '3000'} : style}>
                 <div className="movie-background" style={!showDetails ? {display: 'none'} : {display: 'fixed'} }>
                     <button className="movie-close-btn" onClick={this.handleShowDetails}><span className="movie-close-icon"></span></button>
                 </div>

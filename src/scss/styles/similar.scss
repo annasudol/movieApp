@@ -22,6 +22,7 @@
     height: 200px;
     cursor: pointer;
     margin: 0 10px;
+    outline: none;
 
     @media (min-width: $tablet) {
         height: 250px;

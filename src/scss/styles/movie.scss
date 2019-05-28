@@ -9,11 +9,6 @@
     padding-top: 180px;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 200px;
-    left: 0;
-    bottom: 0;
-    z-index: 2000;
     overflow: visible;
 
     @media (min-width: $tablet) {
@@ -108,13 +103,17 @@
         @extend .oswald;
         font-weight: 700;
         color: #fff;
-        font-size: 30px;
+        font-size: 20px;
         text-transform: uppercase;
         margin-bottom: 5px;
+
 
         @media (max-height: 400px ) {
             font-size: 20px;
          }
+         @media (min-width: $tablet) {
+            font-size: 30px;
+        }
     }
 
     span {
@@ -250,9 +249,11 @@
 .movie-close-btn {
     width: 50px;
     height: 50px;
-    position: relative;
+    left: auto;
+    right: 15px;
     top: 15px;
-    left: 30px;
+    position: absolute;
+    z-index: 4000;
     cursor: pointer;
     background: none;
     border: 2px solid rgba(#fff, 0.7);
@@ -281,13 +282,7 @@
         }
     }
 
-    @media (max-height: 400px ) {
-        left: auto;
-        right: 15px;
-        top: 15px;
-        position: absolute;
-        z-index: 4000;
-     }
+
 
 }
 
@@ -303,14 +298,18 @@
 
 
     .movie__item {
-        bottom: 32% !important;
+        bottom: 12% !important;
         min-height: 200px !important;
         background-color: transparent;
+        position: fixed;
 
         @media (max-height: 400px ) {
             bottom: 50% !important;
          }
 
+         @media (min-width: $tablet) {
+            bottom: 10% !important;
+        }
     }
 
     .movie__image {
@@ -318,7 +317,6 @@
 
         @media (min-width: $small) {
             display: block;
-        
         }
     }
 

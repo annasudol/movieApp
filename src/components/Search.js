@@ -78,7 +78,7 @@ class Search extends Component {
     }
 
     return (
-      <Fragment>
+      <>
         <input
           type="text"
           onChange={onChange}
@@ -86,7 +86,7 @@ class Search extends Component {
           placeholder="Search Movie Title..."
         />
         {suggestionsListComponent}
-      </Fragment>
+      </>
     );
   }
 }
