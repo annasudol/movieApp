@@ -5,8 +5,7 @@
     justify-content: center;
     top: 0;
     height: 160px;
-    z-index: 2000;
-
+    z-index: 1000;
 
     @media (min-width: $tablet) {
         height: 110px;
@@ -31,15 +30,12 @@
     @media (min-width: $small) {
         height: 80px;
     }
-
-   
 }
 
 .container {
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
-   
 }
 
 .container-menu {
@@ -83,7 +79,6 @@
         left: 0px;
         top: 0px;
     }
-
 }
 
 
@@ -138,8 +133,6 @@
             top: 0;
             right: 415px;
           }
-        
-
     }
 
     input {
@@ -175,6 +168,5 @@
             position: relative;
             top: 0;
         }
-        
     }
 }

@@ -80,6 +80,7 @@ export class Discover extends Component {
     const { generesAll } = this.props;
     const popularity = [{"popularity.desc": "The most popular"}, {"popularity.asc": "Least popular"}, {"revenue.desc": "The highest revenue"}, {"revenue.asc": "The lowest revenue"}, {"original_title.desc": "By Title"}]
     const year = new Date().getFullYear()
+    
 
     return (
      <div className="discover">
@@ -102,10 +103,9 @@ export class Discover extends Component {
               />
             </div>
           </form>
-         
       </div>
-      {loading ? <div className="loading"><ReactLoading type={'spin'} color={'#66FCF1'} height={200} width={200} /></div>: <Results results={movie} list={movie.results} generes={generesAll} changePage={this.changePage}/>}
-
+      {loading ? <div className="loading"><ReactLoading type={'spin'} color={'#66FCF1'} height={200} width={200} /></div>:
+      <Results results={movie} list={movie.results} generes={generesAll} changePage={this.changePage}/>}
      </div>
     )
   }

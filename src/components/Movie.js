@@ -42,7 +42,7 @@ class Movie extends Component {
         const data = this.props.movieData;
         const title =data['title'];
         const overview = data['overview'];
-        const relaseDate = data['release_date'];
+        const releaseDate = data['release_date'];
         const popularity = parseInt(data['popularity'])
         const generes = data['genres'];
         const firstGen = generes && generes.slice(0, generes.length - 1);
@@ -57,7 +57,7 @@ class Movie extends Component {
   
        
         return (
-          <div>
+          <div className={showDetails && 'movie-sample'}>
                 <div className="movie" style={showDetails ? {backgroundImage: 'none'} : style}>
                 <div className="movie-background" style={!showDetails ? {display: 'none'} : {display: 'fixed'} }>
                     <button className="movie-close-btn" onClick={this.handleShowDetails}><span className="movie-close-icon"></span></button>
@@ -65,12 +65,12 @@ class Movie extends Component {
                 <div className="movie__item" style={showDetails && {bottom: '25%', minHeight: '400px'} }>
                     <div className="movie__text">
                         <h1>{title}</h1>
-                        {firstGen && firstGen.map(genere => <p>{genere.name}, </p> )}
+                        {firstGen && firstGen.map(generes => <p>{generes.name}, </p> )}
                         {lastGen && <p>{lastGen[0].name}</p> }
                         <div className="movie__details">
                            <div className="movie__el"><span>Rating:</span><p>{rating}/10</p></div>
                            <div className="movie__el"><span>Popularity</span><p>{popularity}</p></div>
-                           <div className="movie__el"><span>Release date:</span><p>{relaseDate ? relaseDate : 'no Data'}</p></div>
+                           <div className="movie__el"><span>Release date:</span><p>{releaseDate ? releaseDate : 'no Data'}</p></div>
                            <div className="movie__el"><span>Run Time:</span><p>{runtime ? runtime : 'no Data'}</p></div>
                            <div className="movie__el"><span>Budget:</span><p>{formatter.format(budget)}</p></div>
                            <div className="movie__el"><span>Revenue:</span><p> {formatter.format(revenue)}</p></div>
@@ -85,7 +85,6 @@ class Movie extends Component {
                 </div>
 
             </div>
-            
           </div>
         );
     }

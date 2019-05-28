@@ -6,15 +6,15 @@ import image from '../images/png/no-img.png'
 
 export default class Results extends Component {
   state= {
-      movie: {},
+    movie: {},
   }
   shouldComponentUpdate(nextState, nextProps) {
-        return this.props.results !== nextProps.results || this.state.movie !== nextState.movie;
+    return this.props.results !== nextProps.results || this.state.movie !== nextState.movie;
   }
 
   findGeneres=(id)=>{
-      const IDs = this.props.generes && this.props.generes.filter(result=> result.id === id)
-      return IDs[0] && IDs[0].name
+    const IDs = this.props.generes && this.props.generes.filter(result=> result.id === id)
+    return IDs[0] && IDs[0].name
   }
   
   handleChangePage=(page)=>{
@@ -22,14 +22,12 @@ export default class Results extends Component {
   }
 
   showDetails=(id)=>{
-
-  id && getMovie(id)
-  .then(movie=>this.setState({movie}))
-    
+    id && getMovie(id)
+    .then(movie=>this.setState({movie}))
   }
 
   closeDetails=()=>{
-      this.setState({movie: {}})
+    this.setState({movie: {}})
   }
   
   render() {

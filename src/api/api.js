@@ -1,4 +1,4 @@
-const api_key =`${process.env.REACT_APP_API_KEY_YT}`
+const api_key = "463b8bfc45cbc59423a7200dbfcb5351"
 
 
 export const getMovie = async (id = 76341)=>{

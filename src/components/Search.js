@@ -38,7 +38,6 @@ class Search extends Component {
 
   // Event fired when the user clicks on a suggestion
   onClick = e => {
-    // // Update the user input and reset the rest of the state
     this.setState({
       filteredSuggestions: [],
       showSuggestions: false,
@@ -53,7 +52,7 @@ class Search extends Component {
   render() {
     const { onChange, onClick } = this
     const { filteredSuggestions, showSuggestions, userInput } = this.state;
-    
+  
     let suggestionsListComponent;
 
     if (showSuggestions && userInput) {

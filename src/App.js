@@ -8,9 +8,6 @@ import Search from './components/Search'
 import { getMovie, getGeneres } from './api/api'
 import ReactLoading from 'react-loading';
 
-
-
-
 class App extends Component {
 
   constructor(props) {
@@ -22,7 +19,6 @@ class App extends Component {
       loading: true
     }
   }
-
 
   componentDidMount() {
     getGeneres()
@@ -36,8 +32,6 @@ class App extends Component {
     .catch(error=>{
       console.warn(error)
     })
-
-
   }
 
   handleOnClick=(id)=>{
@@ -64,8 +58,7 @@ class App extends Component {
       <Router>
         <section className="movie-app">
         {loading && <div className="loading"><ReactLoading type={'spin'} color={'#66FCF1'} height={200} width={200} /></div>}
-
-          <header className="header">
+            <header className="header">
               <div className="menu">
                 <div className="container-menu">
                   <Link to="/movieApp"><img src={logo} className="logo" alt="logo" /></Link>
@@ -75,6 +68,7 @@ class App extends Component {
                   </ul>
                 </div>
               </div>
+              </header>
               <Switch>
                 <Route exact path="/" render={() => (<Redirect to="/movieApp"/>)}/>
                 <Route path="/movieApp" render={() => (<Movie movieData={movie} generesAll={generesAll}  updateMovie={this.updateMovie}/>)} />)}/>
@@ -82,7 +76,7 @@ class App extends Component {
                 <Route component={NoMatch}/>
               </Switch>
   
-          </header>
+
         </section>
       </Router>
     );
