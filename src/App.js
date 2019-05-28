@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import Discover from './components/Discover'
 import NoMatch from './components/NoMatch';
 import Movie from './components/Movie'
-import logo from './images/svg/logo.svg'
-import Search from './components/Search'
+import Header from './components/Header'
 import { getMovie, getGeneres } from './api/api'
 import ReactLoading from 'react-loading';
 
@@ -58,17 +57,7 @@ class App extends Component {
       <Router>
         <section className="movie-app">
         {loading && <div className="loading"><ReactLoading type={'spin'} color={'#66FCF1'} height={200} width={200} /></div>}
-            <header className="header">
-              <div className="menu">
-                <div className="container-menu">
-                  <Link to="/movieApp"><img src={logo} className="logo" alt="logo" /></Link>
-                  <ul className="nav-list">
-                      <li><Link to="/discover" className="nav-lis--link">Discover</Link></li>
-                      <li><Link to="/movieApp"><Search handleOnClick={this.handleOnClick}/></Link></li>
-                  </ul>
-                </div>
-              </div>
-              </header>
+            <Header handleOnClick={this.handleOnClick}/>
               <Switch>
                 <Route exact path="/" render={() => (<Redirect to="/movieApp"/>)}/>
                 <Route path="/movieApp" render={() => (<Movie movieData={movie} generesAll={generesAll}  updateMovie={this.updateMovie}/>)} />)}/>
