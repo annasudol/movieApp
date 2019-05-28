@@ -8,15 +8,10 @@ import { getMovie, getGeneres } from './api/api'
 import ReactLoading from 'react-loading';
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
+  state = {
       movie: [],
-      // input: '',
       generesAll: [],
       loading: true
-    }
   }
 
   componentDidMount() {
@@ -64,8 +59,6 @@ class App extends Component {
                 <Route path='/discover' render={() => (<Discover generesAll={generesAll}/>)}/>
                 <Route component={NoMatch}/>
               </Switch>
-  
-
         </section>
       </Router>
     );
