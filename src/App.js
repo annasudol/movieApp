@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import Discover from './components/Discover'
 import NoMatch from './components/NoMatch';
@@ -7,62 +7,56 @@ import Header from './components/Header'
 import { getMovie, getGeneres } from './api/api'
 import ReactLoading from 'react-loading';
 
-class App extends Component {
-  state = {
-      movie: [],
-      generesAll: [],
-      loading: true
-  }
+const App =()=> {
+  const [movie, setMovie] = useState([]);
+  const [id, setId] = useState('76341')
+  const [generesAll, setGeneresAll] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  componentDidMount() {
-    getGeneres()
-    .then(generes=>this.setState({generesAll: generes['genres']}))
-    .catch(error=>{
-      console.warn(error)
-    })
+  useEffect(() => {
+    const fetchData = async () => {
+      getGeneres()
+        .then(generes=>setGeneresAll(generes['genres']))
+        .catch(error=>{
+          console.warn(error)
+        })
+      setLoading(false);
+      getMovie()
+        .then(movie=>setMovie(movie))
+        .catch(error=>{
+          console.warn(error)
+        })
+      };
+    fetchData();
+  }, []);
 
-    getMovie()
-    .then(movie=>this.setState({movie, loading: false}))
-    .catch(error=>{
-      console.warn(error)
-    })
-  }
-
-  handleOnClick=(id)=>{
+  const handleOnClick=(id)=>{
+    setId(id)
     getMovie(id)
-    .then(movie=>this.setState({movie}))
-    .catch(error=>{
-      console.warn(error)
+      .then(movie=>setMovie(movie))
+      .catch(error=>{
+        console.warn(error)
     })
-
   }
 
-  shouldComponentUpdate(nextState) {
-    return this.state.movie !== nextState.movie;
+  const updateMovie=(movie)=>{
+    setMovie(movie)
+    setId(movie.id)
   }
 
-  updateMovie=(movie)=>{
-    this.setState({movie})
-  }
-
-  render() {
-    const { generesAll, movie, loading } = this.state
-
-    return (
-      <Router>
-        <section className="movie-app">
+  return (
+    <Router>
+      <section className="movie-app">
         {loading && <div className="loading"><ReactLoading type={'spin'} color={'#66FCF1'} height={200} width={200} /></div>}
-            <Header handleOnClick={this.handleOnClick}/>
+            <Header handleOnClick={handleOnClick}/>
               <Switch>
                 <Route exact path="/" render={() => (<Redirect to="/movieApp"/>)}/>
-                <Route path="/movieApp" render={() => (<Movie movieData={movie} generesAll={generesAll}  updateMovie={this.updateMovie}/>)} />)}/>
+                <Route path="/movieApp" render={() => (<Movie id={id} data={movie} generesAll={generesAll}  updateMovie={updateMovie}/>)} />)}/>
                 <Route path='/discover' render={() => (<Discover generesAll={generesAll}/>)}/>
                 <Route component={NoMatch}/>
               </Switch>
         </section>
-      </Router>
-    );
-  }
+   </Router>
+  )
 }
-
-export default App;
+export default App

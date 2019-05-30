@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 import logo from '../images/svg/logo.svg'
 import Search from './Search'
 
 
 const Header=({handleOnClick})=> {
-
     return (
-        <header className="header">
+      <header className="header">
         <div className="menu">
           <div className="container-menu">
             <Link to="/movieApp"><img src={logo} className="logo" alt="logo" /></Link>
@@ -20,5 +20,8 @@ const Header=({handleOnClick})=> {
         </header>
     )
 }
+Header.propTypes = {
+  handleOnClick: PropTypes.func,
+};
 
 export default Header;

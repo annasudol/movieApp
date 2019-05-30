@@ -1,84 +1,62 @@
-import React, { Component, Fragment } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { getSearchQueryMovie } from '../api/api'
-class Search extends Component {
 
-  constructor(props) {
-    super(props);
+const Search=({handleOnClick})=>{
+  const [movies, setMovies] = useState([]);
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [userInput, setUserInput] = useState('');
 
-    this.state = {
-      movies: [],
-      // The active selection's index
-      activeSuggestion: 0,
-      // The suggestions that match the user's input
-      filteredSuggestions: [],
-      // Whether or not the suggestion list is shown
-      showSuggestions: false,
-      // What the user has entered
-      userInput: "",
-    };
-  }
-
-  // Event fired when the input value is changed
-  onChange = e => {
+  const onChange = e => {
     const userInput = e.target.value;
     getSearchQueryMovie(userInput)
-    .then(movies=>this.setState({movies: movies.results}))
+    .then(movies=>setMovies(movies.results))
     .catch(error=>{
       console.warn(error)
     })
 
-    const suggestions = this.state.movies && this.state.movies.map(movie=> ({title: movie.title, id: movie.id}))
-    suggestions && this.setState({
-        filteredSuggestions: suggestions,
-        showSuggestions: true,
-        userInput: userInput
-      });
+    const suggestions = movies && movies.map(movie=> ({title: movie.title, id: movie.id}))
+    suggestions && setFilteredSuggestions(suggestions)
+    suggestions && setShowSuggestions(true)
+    suggestions && setUserInput(userInput)
   };
 
   // Event fired when the user clicks on a suggestion
-  onClick = e => {
-    this.setState({
-      filteredSuggestions: [],
-      showSuggestions: false,
-      userInput: e.title,
-    });
-    this.props.handleOnClick(e.id)
+  const onClick = e => {
+
+    setFilteredSuggestions([])
+    setShowSuggestions(false)
+    setUserInput(e.title)
+
+    handleOnClick(e.id)
   };
 
+  let suggestionsListComponent;
 
-
-
-  render() {
-    const { onChange, onClick } = this
-    const { filteredSuggestions, showSuggestions, userInput } = this.state;
-  
-    let suggestionsListComponent;
-
-    if (showSuggestions && userInput) {
-      if (filteredSuggestions.length) {
-        suggestionsListComponent = (
-          <ul class="suggestions">
-            {filteredSuggestions.map((suggestion) => {
-              return (
-                <li key={suggestion.id} onClick={()=>onClick(suggestion)}>
-                  {suggestion.title}
-                </li>
-              );
-            })}
-          </ul>
-        );
-      } else {
-        suggestionsListComponent = (
-          <ul class="suggestions">
-            <li>No suggestions!</li>
-          </ul>
-        );
-      }
+  if (showSuggestions && userInput) {
+    if (filteredSuggestions.length) {
+      suggestionsListComponent = (
+        <ul class="suggestions">
+          {filteredSuggestions.map((suggestion) => {
+            return (
+              <li key={suggestion.id} onClick={()=>onClick(suggestion)}>
+                {suggestion.title}
+              </li>
+            );
+          })}
+        </ul>
+      );
+    } else {
+      suggestionsListComponent = (
+        <ul class="suggestions">
+          <li>No suggestions!</li>
+        </ul>
+      );
     }
-
-    return (
-      <>
+  }
+  return(
+    <>
         <input
           type="text"
           onChange={onChange}
@@ -86,9 +64,8 @@ class Search extends Component {
           placeholder="Search Movie Title..."
         />
         {suggestionsListComponent}
-      </>
-    );
-  }
+    </>
+  )
 }
 Search.propTypes = {
   handleOnClick: PropTypes.func
