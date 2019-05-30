@@ -13,6 +13,7 @@ Key tools used in this React project are:
 | Tool             | Description   |
 | :-------------:|--------------|
 | [React](http://facebook.github.io/react/index.html) | A JavaScript library for building user interfaces |
+| [react-hooks](https://reactjs.org/docs/hooks-intro.html) | A new addition in React 16.8
 | [SASS](http://sass-lang.com/) | 	Sass is the most mature, stable, and powerful professional grade CSS extension language in the world |
 | [Babel](https://babeljs.io/) | Use next generation JavaScript, today |
 | [Gulp](http://gulpjs.com/) | Gulp is a toolkit for automating painful or time-consuming tasks in your development workflow |
