@@ -55,7 +55,7 @@ const Movie =({data, id, generesAll, updateMovie, showDetails, closeDetails})=>{
                             <div className="movie__el"><span>Budget:</span><p>{formatter.format(budget)}</p></div>
                             <div className="movie__el"><span>Revenue:</span><p> {formatter.format(revenue)}</p></div>
                         </div>
-                        <div className="movie__overview movie__overview--text"><p>{overview}</p></div>
+                        {/* <div className="movie__overview movie__overview--text"><p>{overview}</p></div> */}
                     </div>
                     <div className="movie__image"><img src={posterImg} alt="poster"/></div>
                     <div className="movie__overview"><p>{overview}</p></div>

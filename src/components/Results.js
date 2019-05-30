@@ -18,7 +18,7 @@ const Results=({results, generes, changePage})=>{
 
   const showDetails=(id)=>{
     id && getMovie(id)
-    .then(movie=>setMovie({movie}))
+    .then(movie=>setMovie(movie))
     .catch(err=> console.warn('Error', err))
   }
 

@@ -22,11 +22,10 @@ const Similar=({list, generes, updateMovie})=>{
         const IDs = generes && generes.filter(result=> result.id === id)
         return IDs[0] && IDs[0].name
     }
-    console.log(results, 'list')
 
     return(
         <div className="similar">
-            <h2>{results && (results.length > 0 ? 'Similar movies:' : 'No similar movies:')}</h2>
+            <h2>{results && (results.length > 0 && 'Similar movies:')}</h2>
             <Slider {...settings}>
                 {results && (results.length > 0 && results.map((result)=>
                     <div key={result.id} className="similar__item" onClick={()=>showDetails(result.id)}>
