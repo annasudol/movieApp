@@ -9,7 +9,7 @@
     "browser-router": "^0.2.0",
     "dotenv": "^7.0.0",
     "gh-pages": "^2.0.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.19.0",
     "react": "^16.8.3",
